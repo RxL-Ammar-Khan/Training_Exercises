@@ -1,0 +1,111 @@
+create table employee (emp_id number, employee_name varchar2(500), department_id number, location_id number, salary number);
+create table department (department_id number, department_name varchar2(500));
+create table locations (location_id number, location_name varchar2(500));
+
+
+alter table employee 
+add constraint emp_id
+primary key(emp_id)
+alter table department 
+add constraint department_id
+primary key(department_id)
+alter table locations
+add constraint location_id
+primary key(location_id)
+// creating foreign key for Employee table 
+alter table employee
+add foreign key(department_id) references department(department_id)
+// creating foreign key for Employee table 
+alter table employee
+add foreign key(location_id) references locations(location_id)
+
+'//Location data
+insert into locations(location_id,location_name)
+values(1,'A1');
+insert into locations(location_id,location_name)
+values(2,'A2');
+//Department data
+insert into department(department_id,department_name)
+values(1,'A1');
+insert into department(department_id,department_name)
+values(2,'A2');
+insert into department(department_id,department_name)
+values(3,'A3');
+insert into department(department_id,department_name)
+values(4,'A4');
+//Employee data
+insert into employee(emp_id,employee_name,department_id,location_id,salary)
+values(1,'A1',1,1,20000)
+insert into employee(emp_id,employee_name,department_id,location_id,salary)
+values(2,'A2',2,1,20000)
+insert into employee(emp_id,employee_name,department_id,location_id,salary)
+values(3,'A3',2,1,20000)
+insert into employee(emp_id,employee_name,department_id,location_id,salary)
+values(4,'A4',1,1,20000)
+insert into employee(emp_id,employee_name,department_id,location_id,salary)
+values(5,'A5',2,2,30000);
+insert into employee(emp_id,employee_name,department_id,location_id,salary)
+values(6,'A6',1,2,30000);
+insert into employee(emp_id,employee_name,department_id,location_id,salary)
+values(7,'A7',2,2,30000);
+insert into employee(emp_id,employee_name,department_id,location_id,salary)
+values(8,'A8',2,2,30000);
+insert into employee(emp_id,employee_name,department_id,location_id,salary)
+values(9,'A9',2,2,30000);
+insert into employee(emp_id,employee_name,department_id,location_id,salary)
+values(10,'A10',2,2,30000);
+insert into employee(emp_id,employee_name,department_id,location_id,salary)
+values(11,'A11',2,2,30000);
+insert into employee(emp_id,employee_name,department_id,location_id,salary)
+values(12,'A12',2,2,30000);
+insert into employee(emp_id,employee_name,department_id,location_id,salary)
+values(13,'A13',2,2,30000);
+insert into employee(emp_id,employee_name,department_id,location_id,salary)
+values(14,'A14',2,2,30000);
+insert into employee(emp_id,employee_name,department_id,location_id,salary)
+values(15,'A15',2,2,30000);
+insert into employee(emp_id,employee_name,department_id,location_id,salary)
+values(16,'A16',2,2,30000);
+insert into employee(emp_id,employee_name,department_id,location_id,salary)
+values(17,'A17',2,2,30000);
+insert into employee(emp_id,employee_name,department_id,location_id,salary)
+values(18,'A18',2,2,30000);
+insert into employee(emp_id,employee_name,department_id,location_id,salary)
+values(19,'A19',2,2,30000);
+insert into employee(emp_id,employee_name,department_id,location_id,salary)
+values(20,'A20',2,2,30000);
+
+
+
+QUERIES
+a)
+select employee_name, Department_name
+from employee
+join department 
+on employee.department_id = department.department_id
+
+
+
+b)
+select location_name, department_name, employee_name, salary
+from employee
+join locations
+on employee.location_id=locations.location_id
+join department
+on employee.department_id=department.department_id
+
+c)
+select department_id, MAX(salary) as max_salary
+from employee
+join department
+on employee.department_id=department.department_id
+group by department_id
+
+d)
+SELECT DEPARTMENT_NAME,LOCATION_NAME, AVG(SALARY)
+FROM EMPLOYEE
+JOIN LOCATIONS USING (LOCATION_ID)
+JOIN DEPARTMENT USING (DEPARTMENT_ID)
+GROUP BY DEPARTMENT_NAME,LOCATION_NAME;
+
+
